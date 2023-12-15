@@ -45,8 +45,26 @@ Requisitos para funcionar hasta el momento
 
 - Docker
 
+Notas de aprendizaje
+
+- Listar imagenes ejecutandose/existentes
+
+```bash
+docker ps -a
 ```
-TODO comando para descargar/instalar todo
+
+- Iniciar un servicio del archivo compose.yaml
+  - Descargar la imagen del servicio y configurar.
+  - Donde -d permite liberar la consola donde se ejecuto el cmd
+
+```bash
+docker compose up -d <nombre del servicio>
+```
+
+- Interactuar con un servicio, ejemplo Postgres
+
+```bash
+docker exec -it db psql -U <usuario postgres>
 ```
 
 ### Installing
