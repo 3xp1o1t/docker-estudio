@@ -1,5 +1,5 @@
-<p align="center">
   <a href="" rel="noopener">
+<p align="center">
  <img src="github-header-image.png" alt="Project logo"></a>
 </p>
 
@@ -17,6 +17,12 @@
 ---
 
 <p align="center">Proyecto para estudiar Docker con Node.js y NextJs</p>
+
+<a href="" rel="noopener">
+<p align="center">
+ <img src="previewModal.png" alt="Project modal"></a>
+ <img src="previewTable.png" alt="Project table"></a>
+</p>
 
 ## 📝 Table of Contents
 
@@ -98,6 +104,38 @@ docker exec -it backend npx prisma migrate dev --name init
 postgres=# \dt || \l
 # select de valores
 select * from "User"; #Importante las "" en el nombre de la tabla.
+```
+
+- Dockerizar un proyecto de NextJs
+
+Al ser un proyecto que no sera desplegado en vercel, el output standalone
+deja hacer lo que queramos con el código
+
+```js
+//next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'standalone',
+};
+
+module.exports = nextConfig;
+```
+
+Posteriormente, agregar los archivos de _.dockerignore_ y _frontend.dockerfile_ a la carpeta del frontend similar al backend.
+
+El archivo _frontend.dockerfile_ utiliza la misma estructura del ejemplo en su github oficial
+
+<https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile>
+
+Simplemente remplazamos la linea donde usa _yarn_ por npm en caso sea necesario
+
+Posteriormente agregar el servicio al archivo compose.yaml
+
+Al final, hacemos un build de nuevo y levantamos el servicio.
+
+```bash
+docker compose build
+docker compose up -d frontend
 ```
 
 ### Instalación

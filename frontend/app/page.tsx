@@ -38,7 +38,7 @@ export default function Home() {
   const API = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
-  const [userInfo, setUserInfo] = useState<User>();
+  const [userInfo, setUserInfo] = useState<User>({ name: '', email: '' });
   const [userAction, setUserAction] = useState<string | undefined>('add');
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function Home() {
   }, [API]);
 
   const handleActionClick = useCallback(
-    (user?: User, action?: string) => {
+    (user: User, action?: string) => {
       setUserInfo(user);
       setUserAction(action);
       onOpen();
@@ -111,7 +111,7 @@ export default function Home() {
       <div className="flex justify-end py-2">
         <Button
           variant="shadow"
-          onClick={() => handleActionClick(undefined, 'add')}
+          onClick={() => handleActionClick({ name: '', email: '' }, 'add')}
         >
           Add new
           <Plus className="h-4 w-4" />

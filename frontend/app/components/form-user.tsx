@@ -17,7 +17,7 @@ import { API, User } from '../constants';
 interface ModalUserProps {
   isOpen: boolean;
   onOpenChange: (isOpen: boolean) => void;
-  user: User;
+  user?: User;
   action?: string;
 }
 
@@ -35,7 +35,6 @@ export default function ModalUser({
   const createUser = async (values: { name: string; email: string }) => {
     try {
       const response = await axios.post(`${API}/users`, values);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -78,10 +77,10 @@ export default function ModalUser({
         createUser(values);
         break;
       case 'edit':
-        updateUser(user.id, values);
+        if (user?.id) updateUser(user.id, values);
         break;
       case 'delete':
-        deleteUser(user.id);
+        if (user?.id) deleteUser(user.id);
         break;
     }
     onOpenChange(false);
@@ -104,6 +103,16 @@ export default function ModalUser({
                       {user?.name}
                     </p>{' '}
                     from the database?
+                    <Input
+                      defaultValue={user?.email}
+                      {...register('email')}
+                      disabled
+                    />
+                    <Input
+                      defaultValue={user?.name}
+                      {...register('name')}
+                      disabled
+                    />
                   </h1>
                 ) : (
                   <>
