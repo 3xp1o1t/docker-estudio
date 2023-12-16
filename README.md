@@ -41,9 +41,18 @@ Estas instrucciones te permitirán tener una copia del proyecto funcionando en t
 
 ### Prerequisites
 
-Requisitos para funcionar hasta el momento
+Requisitos para funcionar hasta el momento modo desarrollo
 
 - Docker
+
+Compilar la imagen, iniciar los servicios y la migración
+
+```bash
+docker compose build
+docker compose up -d backend
+docker compose up -d db
+docker exec -it backend npx prisma migrate dev --name init
+```
 
 Notas de aprendizaje
 
@@ -59,12 +68,36 @@ docker ps -a
 
 ```bash
 docker compose up -d <nombre del servicio>
+ex: docker compose up -d db # run db service
 ```
 
 - Interactuar con un servicio, ejemplo Postgres
 
 ```bash
-docker exec -it db psql -U <usuario postgres>
+docker exec -it <service> <params>
+docker exec -it db psql -U postgres # start db psql with user postgres
+```
+
+- Compilar un contenedor
+
+```bash
+# Requiere un archivo compose.yaml
+docker compose build
+```
+
+- Usando prisma es posible ejecutar la migración una vez iniciado el contenedor
+
+```bash
+# después de compilar el servicio de backend
+docker compose up -d backend
+# verificar si funciona
+docker ps -a
+# ejecutar la migración
+docker exec -it backend npx prisma migrate dev --name init
+# verificar en el servicio de postgresql
+postgres=# \dt || \l
+# select de valores
+select * from "User"; #Importante las "" en el nombre de la tabla.
 ```
 
 ### Installing
