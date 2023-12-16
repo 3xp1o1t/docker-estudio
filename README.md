@@ -100,7 +100,7 @@ postgres=# \dt || \l
 select * from "User"; #Importante las "" en el nombre de la tabla.
 ```
 
-### Installing
+### Instalación
 
 Guía de instalación/inicio del proyecto
 
@@ -116,7 +116,7 @@ TODO docker ps -a
 
 TODO <Imagen como se ve corriendo>
 
-## 🔧 Tests <a name = "tests"></a>
+## 🔧 Pruebas <a name = "tests"></a>
 
 TODO agregar pruebas tal vez al front/back
 
@@ -143,7 +143,8 @@ TODO Como desplegar la aplicación
 - [Express](https://expressjs.com/) - Framework servidor
 - [NextJs](https://vuejs.org/) - Framework web
 - [NodeJs](https://nodejs.org/en/) - Backend
-- [NextUi](https://nextui.com) - Librería UI
+- [NextUi](https://nextui.org) - Librería UI
+- [NextThemes](https://www.npmjs.com/package/next-themes) - Temas para Next UI
 - [Header](https://leviarista.github.io/github-profile-header-generator/) - Header Repo
 
 ## ✍️ Autor <a name = "authors"></a>
