@@ -26,11 +26,11 @@ export default function RootLayout({
                 <ThemeSwitcher />
               </div>
             </header>
-            <div className="container flex-1 items-center border-b py-6 px-20 bg-white dark:bg-slate-950 text-black dark:text-white">
+            <div className="container flex-1 items-center border-b py-6 px-20 ">
               {children}
             </div>
             <footer className="container flex h-14 items-center justify-center py-6 px-20">
-              <p className="text-center text-sm leading-loose text-gray-400">
+              <p className="text-center text-sm leading-loose text-gray-500">
                 Jesus Montiel
               </p>
             </footer>
