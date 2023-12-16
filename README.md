@@ -142,17 +142,25 @@ docker compose up -d frontend
 
 Guía de instalación/inicio del proyecto
 
-```
-TODO comando para iniciar el contenedor
+```bash
+docker compose up -d frontend
+# Si el volumen de la BD no existe, este comando lo creara
+# y posteriormente hay que ejecutar la migración de prisma
+docker exec -it backend npx prisma migrate dev --name init
 ```
 
 Verificar que este ejecutándose
 
 ```
-TODO docker ps -a
+docker ps -a
 ```
 
-TODO <Imagen como se ve corriendo>
+Docker ejecutándose
+
+<a href="" rel="noopener">
+  <p align="center">
+  <img src="dockerRunning.png" alt="Docker logo"></a>
+</p>
 
 ## 🔧 Pruebas <a name = "tests"></a>
 
@@ -166,13 +174,11 @@ TODO ejemplo de test
 
 ## 🎈 Uso <a name="usage"></a>
 
-Como usar el sistema
-
-TODO foto o ejemplos
+Una vez iniciado el contenedor, visitar <http://localhost:3000>
 
 ## 🚀 Despliegue <a name = "deployment"></a>
 
-TODO Como desplegar la aplicación
+TODO despliegue a un servidor
 
 ## ⛏️ Construido con <a name = "built_using"></a>
 
